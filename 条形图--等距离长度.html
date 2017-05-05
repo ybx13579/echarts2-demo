@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:#2c2c2c;
+        }
+    </style>
+</head>
+<body>
+    <div id="hideBar9" style="width:1300px;height:300px; "></div>
+
+</body>
+</html>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/echarts/echarts.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+        require.config({
+            paths: {
+                echarts: 'js/echarts/'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/line',
+                'echarts/chart/bar',
+                'echarts/chart/pie',
+            ],
+            function (ec) {
+                var myChartHideBar9 = ec.init(document.getElementById('hideBar9'));
+                hideBarOption9 = {
+                    tooltip: {
+                        show: false,
+                    },
+                    toolbox: {
+                        show: false,
+                    },
+                    calculable: false,
+                    grid: {
+                        x: 100,
+                        x2: 400,
+                        y2: 30,
+                        borderWidth: 0,
+                    },
+                    xAxis: [
+                        {
+                            type: 'value',
+                            axisLabel: {
+                                show: false,
+                                interval: 'auto',    // {number}
+                                textStyle: {
+                                    color: '#fff',
+                                    fontFamily: 'sans-serif',
+                                    fontSize: 15,
+                                }
+                            },
+                            axisLine: {    // 轴线
+                                show: false,
+                            },
+                            splitLine: {//中间分隔线
+                                show: false,
+                            },
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'category',
+                            axisLabel: {
+                                show: true,
+                                interval: 'auto',    // {number}
+                                textStyle: {
+                                    color: '#fff',
+                                    fontFamily: 'sans-serif',
+                                    fontSize: 15,
+                                }
+                            },
+                            axisLine: {    // 轴线
+                                show: false,
+                            },
+                            splitLine: {//中间分隔线
+                                show: false,
+                            },
+                            data: ['第6天', '第5天', '第4天', '第3天', '第2天', '第1天']
+                        },
+                        //辅助x轴
+                        {
+                            type: 'category',
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false
+                            },
+                            axisLabel: {
+                                show: false
+                            },
+                            splitArea: {
+                                show: false
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            data: ['第6天', '第5天', '第4天', '第3天', '第2天', '第1天']
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '',
+                            type: 'bar',
+                            barGap: 10,
+                            barWidth: 20,
+                            itemStyle: {
+                                normal: {
+                                    color: '#0e7ea5',
+                                    label: {
+                                        show: false,
+                                        position: 'insideRight',
+                                        formatter: '{c} 个'
+                                    }
+                                }
+                            },
+                            data: ["88.4", "58.8", "42.0", "33.6", "15.6", "33.6", ]
+                        },
+                        {
+                            name: '',
+                            type: 'bar',
+                            barWidth: 20,
+                            yAxisIndex: 1,
+                            itemStyle: {
+                                normal:
+                                {
+                                    color: 'rgba(120,203,235,.2)',
+                                    label: {
+                                        show: true,
+                                        position: 'right',
+                                        formatter: function (params) {
+                                            for (var i = 0, l = hideBarOption9.yAxis[0].data.length; i < l; i++) {
+                                                if (hideBarOption9.yAxis[0].data[i] == params.name) {
+                                                    return '今天吃了：'+ hideBarOption9.series[0].data[i]+'个糖';
+                                                }
+                                            }
+                                        },
+                                        textStyle: {
+                                            color: '#b1d2ec'
+                                        }
+                                    }
+                                },
+                                emphasis: {
+                                    color: 'rgba(120,203,235,0.1)',
+                                },
+                            },
+                            data: [100, 100, 100, 100, 100, 100, 100]
+                        },
+                    ]
+                };
+                myChartHideBar9.setOption(hideBarOption9);
+            }
+        )
+    })
+</script>
+
