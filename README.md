@@ -12,9 +12,11 @@ CSDN ：http://blog.csdn.net/YangBingX<br />
 ----
 效果图：
 1、条形图--等长
-<img src="img/条形图--等长.png" />
 
+<img src="img/条形图--等长.png" />
+----
 2、圆环扇形
+
 <img src="img/圆环扇形.png" />
 
 
