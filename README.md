@@ -28,6 +28,11 @@ CSDN ：http://blog.csdn.net/YangBingX<br />
 <img src="img/分组柱状图.png" />
 
 
+4、堆积条形图
+
+<img src="img/堆积条形图.png" />
+
+
 
 
 
