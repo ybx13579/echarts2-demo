@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: #202020;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="makezhuD1" style="width:574px;height:370px;"></div>
+</body>
+</html>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/echarts/echarts.js"></script>
+
+
+
+<script>
+    $(document).ready(function () {
+
+
+        require.config({
+            paths: {
+                echarts: 'js/echarts/'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/line',
+                'echarts/chart/bar',
+                'echarts/chart/pie',
+            ],
+            function (ec) {
+              
+
+                var myChartmakezhuD1 = ec.init(document.getElementById('makezhuD1'));
+
+                //右侧    4、特效镜头
+                optionmakezhuD1 = {
+                    title: {
+                        show: false,
+                    },
+                    tooltip: {         // 悬浮框
+                        show: false,
+                        trigger: 'axis',
+                        axisPointer: {      // 坐标轴指示器，坐标轴触发有效
+                            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        showDelay: 0,
+                        hideDelay: 50,
+                        transitionDuration: 0,
+                        backgroundColor: 'rgba(191,191,191,0.9)',
+                        borderColor: '#bd4214',
+                        borderRadius: 8,
+                        borderWidth: 1,
+                        textStyle: {
+                            color: '#000',
+                            decoration: 'none',
+                            fontFamily: 'Verdana, sans-serif',
+                            fontSize: 15,
+                            fontWeight: 'bold'
+                        },
+                        formatter: "{b}:<br/>{a}:{c}%<br/>{a1}:{c1}%<br/>{a2}:{c2}%"
+                    },
+                    grid: {
+                        y: 30,
+                        y2: 70,
+                        x: 70,
+                        x2: 26,
+                        borderWidth: 0,
+                    },
+                    legend: {//顶部选项
+                        show: false,
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ['老师A', '老师B', '老师C', '老师D'],
+                        textStyle: {
+                            color: '#79b4d7',
+                        }
+                    },
+                    toolbox: {
+                        show: false,
+                    },
+                    calculable: false,
+                    xAxis: [
+                        {
+                            type: 'category',
+                            axisLabel: {
+                                show: true,
+                                rotate: 45,
+                                splitNumber: 15,
+                                interval: 'auto',    // {number}
+                                textStyle: {
+                                    color: '#d5d5d5',
+                                    fontFamily: '微软雅黑',
+                                    fontSize: 12,
+                                    fontWeight: 300
+                                }
+                            },
+                            splitLine: {//中间分隔线
+                                show: false,
+                            },
+                            axisLine: {    // 主轴线
+                                show: true,
+                                lineStyle: {
+                                    color: '#ddd',
+                                    type: 'solid',
+                                    width: 2
+                                }
+                            },
+                            axisTick: {    // 轴标记
+                                show: false,
+                            },
+                            data: ['未通过', '已通过', '待审核', '', '未通过', '已通过', '待审核', '', '未通过', '已通过', '待审核', '', '未通过', '已通过', '待审核', ],
+
+                        },
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            //max:100,//Y轴最大值 不写的话自动
+                            axisLabel: {
+                                show: true,
+                                interval: 'auto',
+                                textStyle: {
+                                    color: '#d5d5d5',
+                                    fontFamily: '微软雅黑',
+                                    fontSize: 14,
+                                },
+                                formatter: '{value} ',
+                            },
+                            splitLine: {//中间分隔线
+                                show: false,
+                            },
+                            axisLine: {    // 主轴线
+                                show: true,
+                                lineStyle: {
+                                    color: '#ddd',
+                                    type: 'solid',
+                                    width: 2
+                                }
+                            },
+                            axisTick: {    // 轴标记
+                                show: false,
+                            },
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '未通过量',
+                            type: 'bar',
+                            barWidth: 20,
+                            barGap: '20%',
+                            barCategoryGap: '30%',
+                            itemStyle: {
+                                normal: {
+                                    color: "rgba(193,35,43,1)",
+                                    barBorderRadius: 0,
+                                    label: {
+                                        show: true,
+                                        position: "top",
+                                        formatter: function (p) {
+                                            return p.value;
+                                        }
+                                    }
+                                }
+                            },
+                            data: [//数据第一个为老师A的    依次为  老师A 老师B 老师C 老师D
+                                {
+                                    value: 4450,//老师A的数据    未通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#006e81',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 5440,//老师A的数据    已通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#128d9f',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 460,//老师A的数据    待审核量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#40b1c3',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                '',
+                                {
+                                    value: 2450,//老师B的数据    未通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#00782c',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 7450,//老师B的数据    已通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#0ead48',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 7450,//老师B的数据    待审核量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#48cd78',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                '',
+                                {
+                                    value: 3540,//老师C的数据    未通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#ef5454',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 5120,//老师C的数据    已通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#f86666',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 11160,//老师C的数据    待审核量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#ff8383',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                '',
+                                {
+                                    value: 8440,//老师D的数据    未通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#2252a1',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 4450,//老师D的数据    已通过量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#3a66af',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                                {
+                                    value: 60,//老师D的数据    待审核量
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#5c85c5',
+                                        },
+                                        emphasis: {
+                                            color: 'rgba(0,0,0,0)'
+                                        }
+                                    }
+                                },
+                            ],
+                        },
+                    ]
+                }
+                myChartmakezhuD1.setOption(optionmakezhuD1);
+
+
+            }
+        );
+
+
+    })
+</script>
+
+

@@ -23,6 +23,11 @@ CSDN ：http://blog.csdn.net/YangBingX<br />
 <img src="img/圆环扇形.png" />
 
 
+3、分组柱状图
+
+<img src="img/分组柱状图.png" />
+
+
 
 
 
