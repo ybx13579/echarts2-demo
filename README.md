@@ -9,6 +9,7 @@
 - Tips：如需要点击事件就加载config.js
  
 -------
+资料 ：
 
 - 官网 API：http://echarts.baidu.com/echarts2/doc/doc.html
 - CSDN ：http://blog.csdn.net/YangBingX
