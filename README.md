@@ -5,12 +5,13 @@
 
 -------
 - 这是require进来的，按需加载就好
-- 或者直接引用echarts.min.js，都可，看自己需求
+- 或者直接引用echarts.min.js，都可，看自己需求 
 - Tips：如需要点击事件就加载config.js
  
+-------
 
- - 官网 API：http://echarts.baidu.com/echarts2/doc/doc.html
- - CSDN ：http://blog.csdn.net/YangBingX
+- 官网 API：http://echarts.baidu.com/echarts2/doc/doc.html
+- CSDN ：http://blog.csdn.net/YangBingX
 
 
 
